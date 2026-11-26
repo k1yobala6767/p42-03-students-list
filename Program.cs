@@ -7,22 +7,27 @@ class Program
     // это уже делает класс Student (неверные оценки он не примет).
     static void AddScores(Student s, int[] scores)
     {
-        // TODO: напишите решение здесь
+    foreach (int score in scores)
+        s.AddScore(score);
     }
-
     // Верните строку списка: "<номер>. <имя>: <средний балл, округлённый до 0,1>".
     // Если у студента нет оценок: "<номер>. <имя>: нет оценок".
     // Пример: FormatLine(1, студент Сериков Дамир с оценками 72, 65, 80) → "1. Сериков Дамир: 72,3"
     static string FormatLine(int number, Student s)
     {
-        // TODO: напишите решение здесь
-        return "";
+    if (!s.HasScores)
+          return $"{number}. {s.Name}: нет оценок";
+    return $"{number}. {s.Name}: {Math.Round(s.Average, 1)}";
     }
-
     // Выведите весь список группы: по одной строке FormatLine на студента, нумерация с 1.
     static void PrintList(Student[] group)
     {
-        // TODO: напишите решение здесь
+    int number = 1;
+         foreach (Student s in group)
+{
+    Console.WriteLine(FormatLine(number, s));
+    number++;
+}
     }
 
     static void Main()
